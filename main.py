@@ -5,6 +5,9 @@ def main():
     #print(num_words)
     book_char_count = char_count(text)
     #print_char_counts(book_char_count)
+    sorted_char_list = sort_char_list(book_char_count)
+    print_ordered_char(sorted_char_list, num_words, book_path)
+
 
 
 def words_count(text):
@@ -56,10 +59,27 @@ def char_count(text):
                 char_dict[i] += 1
     return char_dict
 
+
+
 def print_char_counts(book_char_count):
     for i in book_char_count:
        print(f"''{i}': {book_char_count[i]}'")
 
+def sort_char_list(book_char_count):
+    char_list = [(char, count) for char, count in book_char_count.items()]
+    char_list.sort()
+    sorted_char_list = sorted(char_list, key=lambda pair: pair[1], reverse=True)
+    return sorted_char_list
 
+def print_ordered_char(sorted_char_list, num_words, book_path):
+    print(f"--- Begin report of {book_path} ---")
+    print(f"{num_words} words found in the document")
+    print("")
+
+    for item in sorted_char_list:
+        if item[0] != " ":
+            print(f"The '{item[0]}' character was found {item[1]} times")
+
+    print("--- End report ---")
 
 main()
