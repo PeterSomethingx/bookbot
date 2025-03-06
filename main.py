@@ -1,5 +1,7 @@
+import sys
+
 def main():
-    book_path = "/root/workspace/github.com/PeterSomethingx/bookbot/books/frankenstein.txt" 
+    book_path = 
     text = book_text(book_path)
     num_words = words_count(text)
     #print(num_words)
